@@ -72,6 +72,7 @@ UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 app.mount("/uploads", StaticFiles(directory=str(UPLOAD_DIR)), name="uploads")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -83,7 +84,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 Base.metadata.create_all(bind=engine)
 with engine.begin() as connection:
