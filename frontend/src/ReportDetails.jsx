@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ReportDetails.css";
 
-const API = "http://127.0.0.1:8000";
+const API = "https://roadwatch-ai-ys0v.onrender.com"
 
 export default function ReportDetails() {
   const { id } = useParams();
@@ -26,6 +26,7 @@ const [message, setMessage] = useState("");
         }
 
         const hazards = await response.json();
+        console.log("Report ID:", id, "Hazards:", hazards);
         const selected = hazards.find(
           (hazard) => String(hazard.id) === String(id)
         );
