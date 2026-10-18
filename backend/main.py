@@ -17,14 +17,15 @@ from pydantic import BaseModel, Field
 from typing import Literal
 
 # Load RoadWatch AI detection models once
+BASE_DIR = Path(__file__).resolve().parent
+
 DEBRIS_MODEL = YOLO(
-    "models/debris/Vision Classification.pt"
+    str(BASE_DIR / "models" / "debris" / "Vision Classification.pt")
 )
 
 WATERLOGGING_MODEL = YOLO(
-    "models/waterlogging/weights/best.pt"
+    str(BASE_DIR / "models" / "waterlogging" / "weights" / "best.pt")
 )
-
 
 
 def calculate_distance_meters(lat1, lon1, lat2, lon2):
