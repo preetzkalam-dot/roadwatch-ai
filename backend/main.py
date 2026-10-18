@@ -19,14 +19,8 @@ from typing import Literal
 # Load RoadWatch AI detection models once
 BASE_DIR = Path(__file__).resolve().parent
 
-DEBRIS_MODEL = YOLO(
-    str(BASE_DIR / "models" / "debris" / "Vision Classification.pt")
-)
-
-WATERLOGGING_MODEL = YOLO(
-    str(BASE_DIR / "models" / "waterlogging" / "weights" / "best.pt")
-)
-
+DEBRIS_MODEL = None
+WATERLOGGING_MODEL = None
 
 def calculate_distance_meters(lat1, lon1, lat2, lon2):
 
