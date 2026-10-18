@@ -1,0 +1,56 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Node.js
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Logs
+*.log
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Editor and OS files
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Backend secrets and environment
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Python environment and cache
+backend/venv/
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+
+# Uploaded files and runtime outputs
+backend/uploads/
+backend/runs/
+
+# AI model weights (large file)
+backend/*.pt
+
+# Frontend dependencies
+frontend/node_modules/
+
+# Frontend build output
+frontend/dist/
+frontend/build/

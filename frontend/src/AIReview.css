@@ -1,0 +1,349 @@
+.ai-review-page {
+  min-height: 100vh;
+  padding: 36px;
+  background: #0b1120;
+  color: #e5eaf4;
+  font-family: Inter, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.ai-review-page * {
+  box-sizing: border-box;
+}
+
+.ai-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #253148;
+}
+
+.ai-review-eyebrow {
+  color: #42d9ad;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.ai-review-header h1 {
+  margin: 10px 0;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -1px;
+}
+
+.ai-review-header > div > p:last-child {
+  color: #96a5bc;
+  font-size: 14px;
+}
+
+.ai-review-status {
+  padding: 10px 14px;
+  border: 1px solid #246c5a;
+  border-radius: 8px;
+  color: #54e3b7;
+  background: #102c2a;
+  font-size: 11px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.ai-review-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.ai-review-panel {
+  min-width: 0;
+  padding: 26px;
+  border: 1px solid #253148;
+  border-radius: 15px;
+  background: #111a2c;
+  box-shadow: 0 12px 30px #00000018;
+}
+
+.ai-review-panel h2 {
+  margin: 0 0 10px;
+  font-size: 17px;
+}
+
+.ai-review-muted {
+  color: #91a0b7;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.ai-review-upload {
+  min-height: 150px;
+  margin-top: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px dashed #3c536f;
+  border-radius: 12px;
+  background: #0d1627;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.ai-review-upload:hover {
+  border-color: #42d9ad;
+  background: #102128;
+}
+
+.ai-review-upload-icon {
+  color: #42d9ad;
+  font-size: 30px;
+}
+
+.ai-review-upload strong {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.ai-review-upload > span:last-of-type {
+  color: #91a0b7;
+  font-size: 12px;
+}
+
+.ai-review-upload input {
+  width: 100%;
+  max-width: 220px;
+  color: #aab7cb;
+  font-size: 11px;
+}
+
+.ai-review-preview {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  margin-top: 20px;
+  object-fit: contain;
+  border: 1px solid #253148;
+  border-radius: 10px;
+  background: #080d17;
+}
+
+.ai-review-analyze {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #42d9ad;
+  color: #071b18;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ai-review-analyze:hover:not(:disabled) {
+  background: #65edc4;
+  transform: translateY(-1px);
+}
+
+.ai-review-analyze:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.ai-review-error {
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid #743d4a;
+  border-radius: 8px;
+  background: #301923;
+  color: #ffb6c1;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.ai-review-empty {
+  min-height: 210px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #253148;
+  border-radius: 10px;
+  background: #0d1627;
+  text-align: center;
+}
+
+.ai-review-empty > span {
+  margin-bottom: 12px;
+  color: #42d9ad;
+  font-size: 36px;
+}
+
+.ai-review-empty strong {
+  font-size: 14px;
+}
+
+.ai-review-empty p {
+  max-width: 300px;
+  color: #91a0b7;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.ai-review-summary {
+  margin: 22px 0 16px;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #28483f;
+  border-radius: 10px;
+  background: #102620;
+}
+
+.ai-review-summary span {
+  color: #9dbbb2;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.ai-review-summary strong {
+  color: #54e3b7;
+  font-size: 27px;
+}
+
+.ai-review-detections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-review-detection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 15px;
+  border: 1px solid #29364d;
+  border-radius: 9px;
+  background: #0d1627;
+}
+
+.ai-review-detection strong {
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.ai-review-detection p {
+  margin: 6px 0 0;
+  color: #91a0b7;
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.ai-review-detection > span {
+  flex-shrink: 0;
+  padding: 7px 10px;
+  border-radius: 7px;
+  background: #17372f;
+  color: #54e3b7;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ai-review-warning {
+  margin-top: 18px;
+  padding: 15px;
+  border-left: 3px solid #f2bb59;
+  border-radius: 5px;
+  background: #2b2519;
+}
+
+.ai-review-warning strong {
+  color: #f2ca7a;
+  font-size: 13px;
+}
+
+.ai-review-warning p {
+  margin-bottom: 0;
+  color: #c8bda5;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.ai-review-file {
+  overflow-wrap: anywhere;
+}
+
+.ai-review-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.ai-review-actions button {
+  padding: 13px;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ai-review-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.ai-review-approve {
+  border: 1px solid #2c9478;
+  background: #153b32;
+  color: #66e9c0;
+}
+
+.ai-review-reject {
+  border: 1px solid #9a4b57;
+  background: #3a2029;
+  color: #ffadb8;
+}
+
+.ai-review-review-note {
+  margin-top: 14px;
+  color: #f2ca7a;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 800px) {
+  .ai-review-page {
+    padding: 20px;
+  }
+
+  .ai-review-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-review-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 420px) {
+  .ai-review-page {
+    padding: 14px;
+  }
+
+  .ai-review-panel {
+    padding: 18px;
+  }
+}

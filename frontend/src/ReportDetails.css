@@ -1,0 +1,556 @@
+/* =========================================================
+   ROADWATCH AI — REPORTS & REPAIR HISTORY
+   Clean, modern, responsive design
+   ========================================================= */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --rw-ink: #172b3e;
+  --rw-text: #34465b;
+  --rw-muted: #718198;
+  --rw-teal: #087f8c;
+  --rw-teal-dark: #066570;
+  --rw-teal-soft: #e9f7f7;
+  --rw-blue-soft: #edf5fb;
+  --rw-border: #e1e8f0;
+  --rw-surface: #ffffff;
+  --rw-background: #f4f7fb;
+  --rw-success: #18794e;
+  --rw-danger: #bd4148;
+  --rw-radius: 16px;
+  --rw-shadow: 0 8px 26px rgba(23, 43, 62, 0.06);
+}
+
+/* ---------- Page foundation ---------- */
+.report-page {
+  box-sizing: border-box;
+  width: min(100% - 40px, 1000px);
+  min-width: 0;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 30px 0 56px;
+  color: var(--rw-text);
+  font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.report-page *,
+.report-page *::before,
+.report-page *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Navigation ---------- */
+.report-page > .back-link,
+.report-page .back-link {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 24px;
+  padding: 9px 13px;
+  border: 1px solid var(--rw-border);
+  border-radius: 9px;
+  background: var(--rw-surface);
+  color: var(--rw-teal);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.report-page .back-link:hover {
+  border-color: #acdadd;
+  background: var(--rw-teal-soft);
+  color: var(--rw-teal-dark);
+}
+
+/* ---------- Page header ---------- */
+.report-page .report-header {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 0 0 24px;
+  padding: 34px 30px;
+  overflow-wrap: anywhere;
+  border: 1px solid #dce9f0;
+  border-radius: 20px;
+  background:
+    radial-gradient(
+      circle at 92% 15%,
+      rgba(8, 127, 140, 0.10),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #edf7fb 0%, #ffffff 100%);
+  color: var(--rw-ink);
+  text-align: center;
+}
+
+.report-page .report-header p {
+  margin: 0;
+  color: var(--rw-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.report-page .report-header p:first-child {
+  margin-bottom: 9px;
+  color: var(--rw-teal);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.report-page .report-header h1 {
+  margin: 0 0 10px;
+  color: var(--rw-ink);
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -1.2px;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Main content cards ---------- */
+.report-page .report-details-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  margin: 0 0 20px;
+  padding: 28px 30px;
+  border: 1px solid var(--rw-border);
+  border-radius: var(--rw-radius);
+  background: var(--rw-surface);
+  box-shadow: var(--rw-shadow);
+  color: var(--rw-text);
+  text-align: left;
+}
+
+.report-page .report-details-card h2 {
+  margin: 0 0 18px;
+  color: var(--rw-ink);
+  font-size: 20px;
+  font-weight: 750;
+  line-height: 1.35;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+.report-page .report-details-card > p,
+.report-page > p {
+  margin: 8px 0;
+  color: var(--rw-muted);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Report details rows ---------- */
+.report-page .report-detail-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 190px) minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.report-page .report-detail-row:last-child {
+  border-bottom: 0;
+}
+
+.report-page .report-detail-row span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.report-page .report-detail-row strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  justify-self: start;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #263748;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.5;
+  text-align: left;
+  text-transform: none;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Severity badges ---------- */
+.report-page .severity-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  padding: 6px 11px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+.report-page .severity-label.high,
+.report-page .severity-label.critical {
+  border: 1px solid #f1c7c9;
+  background: #fff0f0;
+  color: #b4232d;
+}
+
+.report-page .severity-label.medium {
+  border: 1px solid #f2dfb0;
+  background: #fff8e7;
+  color: #946200;
+}
+
+.report-page .severity-label.low {
+  border: 1px solid #cbe8d4;
+  background: #edfaf1;
+  color: #18794e;
+}
+
+/* ---------- Description section ---------- */
+.report-page .report-details-card h3 {
+  margin: 22px 0 8px;
+  padding-top: 18px;
+  border-top: 1px solid #edf1f5;
+  color: #334155;
+  font-size: 15px;
+  font-weight: 750;
+  text-align: left;
+}
+
+.report-page .report-details-card h3 + p {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid #e8eef4;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #526174;
+  font-size: 14px;
+  line-height: 1.75;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Form layout ---------- */
+.report-page form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  width: 100%;
+  margin: 0;
+}
+
+.report-page form label {
+  display: grid;
+  gap: 8px;
+  width: 100%;
+  margin: 0;
+  color: var(--rw-text);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.report-page form select,
+.report-page form textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 13px 14px;
+  border: 1px solid #d6e1eb;
+  border-radius: 10px;
+  outline: none;
+  background: #fbfcfe;
+  color: var(--rw-ink);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  box-shadow: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.report-page form select {
+  min-height: 46px;
+  cursor: pointer;
+}
+
+.report-page form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.report-page form select:focus,
+.report-page form textarea:focus {
+  border-color: var(--rw-teal);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(8, 127, 140, 0.12);
+}
+
+.report-page form select:focus-visible,
+.report-page form textarea:focus-visible,
+.report-page form button:focus-visible,
+.report-page .back-link:focus-visible {
+  outline: 2px solid var(--rw-teal);
+  outline-offset: 3px;
+}
+
+.report-page form textarea::placeholder {
+  color: #8a98a9;
+  opacity: 1;
+}
+
+/* ---------- Primary action ---------- */
+.report-page form button {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  min-height: 45px;
+  max-width: 100%;
+  margin: 0;
+  padding: 12px 20px;
+  border: 1px solid var(--rw-teal);
+  border-radius: 10px;
+  background: var(--rw-teal);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  line-height: 1.4;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(8, 127, 140, 0.12);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.report-page form button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: var(--rw-teal-dark);
+  background: var(--rw-teal-dark);
+  box-shadow: 0 6px 14px rgba(8, 127, 140, 0.18);
+}
+
+.report-page form button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+  box-shadow: none;
+}
+
+/* ---------- Feedback messages ---------- */
+.report-page [role="status"] {
+  margin: 0;
+  padding: 11px 13px;
+  border: 1px solid #ccebdc;
+  border-radius: 9px;
+  background: #effaf4;
+  color: var(--rw-success);
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Repair history timeline ---------- */
+.report-page .repair-update {
+  margin: 0;
+  padding: 19px 0;
+  border-top: 1px solid #e8edf3;
+}
+
+.report-page .repair-update:first-of-type {
+  border-top: 0;
+}
+
+.report-page .repair-update > p {
+  margin: 13px 0 10px;
+  color: var(--rw-text);
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.report-page .repair-update small {
+  display: block;
+  color: var(--rw-muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ---------- Images ---------- */
+.report-page img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ---------- Navigation spacing: keep 650px ---------- */
+.back-link + .back-link {
+  margin-left: 650px;
+}
+
+.report-page > .back-link + .back-link {
+  margin-left: 0;
+}
+
+/* ---------- Responsive layout ---------- */
+@media (max-width: 700px) {
+  .report-page {
+    width: calc(100% - 28px);
+    padding: 22px 0 38px;
+  }
+
+  .report-page .report-header {
+    padding: 26px 18px;
+    border-radius: 15px;
+  }
+
+  .report-page .report-details-card {
+    padding: 21px 18px;
+    border-radius: 13px;
+  }
+
+  .report-page .report-details-card h2 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 600px) {
+  .report-page .report-detail-row {
+    grid-template-columns: minmax(100px, 38%) minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .report-page .report-detail-row span {
+    font-size: 12px;
+  }
+
+  .report-page .report-detail-row strong {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .report-page {
+    width: calc(100% - 22px);
+    padding-top: 16px;
+  }
+
+  .report-page .back-link {
+    margin-bottom: 17px;
+    font-size: 12px;
+  }
+
+  .report-page .report-header {
+    margin-bottom: 17px;
+    padding: 23px 14px;
+  }
+
+  .report-page .report-header h1 {
+    font-size: 29px;
+    letter-spacing: -0.6px;
+  }
+
+  .report-page .report-header p:first-child {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .report-page .report-details-card {
+    margin-bottom: 15px;
+    padding: 18px 14px;
+  }
+
+  .report-page form {
+    gap: 15px;
+  }
+
+  .report-page form button {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 420px) {
+  .report-page .report-detail-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .report-page > .back-link + .back-link {
+    margin-left: 0;
+  }
+}
+/* Align report values to the right edge of each row */
+.report-page .report-detail-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.report-page .report-detail-row strong {
+  justify-self: end;
+  text-align: right;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+/* Slightly darker hazard report header */
+.report-page .report-header {
+  background:
+    radial-gradient(
+      circle at 92% 15%,
+      rgba(8, 127, 140, 0.16),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #e1f0f4 0%, #edf6f7 100%);
+  border-color: #d0e3e8;
+}
+
+/* Larger RoadWatch hazard label */
+.report-page .report-header p:first-child {
+  font-size: 25px;
+  letter-spacing: 2.5px;
+}
+
+/* Larger high severity text */
+.report-page .report-header p:not(:first-child) {
+  font-size: 18px;
+  font-weight: 600;
+}
