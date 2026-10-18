@@ -86,10 +86,20 @@ app.add_middleware(
 )
 
 Base.metadata.create_all(bind=engine)
+
 with engine.begin() as connection:
     connection.execute(
         text("ALTER TABLE hazards ADD COLUMN IF NOT EXISTS photo_url VARCHAR(255)")
     )
+    connection.execute(
+        text("ALTER TABLE location_updates ADD COLUMN IF NOT EXISTS hazard_id INTEGER")
+    )
+    connection.execute(
+    text(
+        "ALTER TABLE location_updates "
+        "ADD COLUMN IF NOT EXISTS hazard_type VARCHAR(50)"
+    )
+)
 
 
 def get_db():
@@ -225,16 +235,17 @@ def get_active_hazards(db: Session = Depends(get_db)):
             continue
 
         latest_update = (
-            db.query(LocationUpdate)
-            .filter(
-                LocationUpdate.location_key == str(hazard.location_id)
-            )
-            .order_by(
-                LocationUpdate.created_at.desc(),
-                LocationUpdate.id.desc(),
-            )
-            .first()
-        )
+    db.query(LocationUpdate)
+    .filter(
+        LocationUpdate.location_key == str(hazard.location_id),
+        LocationUpdate.hazard_type == hazard.hazard_type,
+    )
+    .order_by(
+        LocationUpdate.created_at.desc(),
+        LocationUpdate.id.desc(),
+    )
+    .first()
+)
 
         if latest_update and latest_update.status == "resolved":
             continue
@@ -245,8 +256,12 @@ def get_active_hazards(db: Session = Depends(get_db)):
 
 class LocationUpdateRequest(BaseModel):
     location_id: int
+    hazard_id: int | None = None
+    hazard_type: str | None = None
     status: str
     description: str
+
+    
 @app.post("/location-updates")
 def create_location_update(
     update: LocationUpdateRequest,
@@ -277,10 +292,12 @@ def create_location_update(
         )
 
     new_update = LocationUpdate(
-        location_key=str(update.location_id),
-        status=update.status,
-        description=update.description.strip(),
-    )
+    location_key=str(update.location_id),
+    hazard_id=update.hazard_id,
+    hazard_type=update.hazard_type,
+    status=update.status,
+    description=update.description.strip(),
+    )   
 
     db.add(new_update)
     db.commit()

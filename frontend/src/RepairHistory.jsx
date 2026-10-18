@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ReportDetails.css";
-
-const API = "http://127.0.0.1:8000";
+const API = "https://roadwatch-ai-ys0v.onrender.com";
 
 export default function RepairHistory() {
   const { locationId } = useParams();
+  const searchParams = new URLSearchParams(window.location.search);
+const hazardType = searchParams.get("hazard_type");
 
   const [updates, setUpdates] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,11 +50,12 @@ export default function RepairHistory() {
       const response = await fetch(`${API}/location-updates`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          location_id: Number(locationId),
-          status,
-          description,
-        }),
+       body: JSON.stringify({
+  location_id: Number(locationId),
+  hazard_type: hazardType,
+  status,
+  description,
+}),
       });
 
       const data = await response.json();

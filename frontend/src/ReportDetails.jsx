@@ -67,7 +67,7 @@ const [message, setMessage] = useState("");
 
   
 <Link
-  to={`/location/${report.location_id}/history`}
+  to={`/location/${report.location_id}/history?hazard_type=${encodeURIComponent(report.hazard_type)}`}
   className="back-link"
 >
   View location repair history →
